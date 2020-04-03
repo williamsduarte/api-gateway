@@ -1,0 +1,14 @@
+version: "3"
+
+services: 
+  redis:
+    image: redis:4.0.5-alpine
+    container_name: "redis_express_gateway"
+    command: ["redis-server", "--appendonly", "yes"]
+    hostname: redis
+    volumes:
+      - "./data:/data"
+    ports:
+      - "6380:6379"
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
